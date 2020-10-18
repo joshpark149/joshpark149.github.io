@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Josh Park</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="#content-right">Projects</a></li>
+				<li><a href="#footer-wrapper">Contact</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>About Josh</h2>
+				<span class="byline">Welcome to my website! Here's some info
+                    about me</span>
+            </div>
+            <p>I'm a sophomore studying math and computer science at Cornell,
+                and I'm also pursuing a minor in music. You can usually find me rock climbing,
+                playing League, eating unhealthy food, playing percussion, and reading math books.
+                Lately I've also gotten into studying competitive programming. </p>
+            <p>My academic interests lie in analysis, financial mathematics, and
+                computing theory. I'm still trying to figure out my career interests, but
+                as of now, I'm a consultant for CS 2110, and I work
+                on grading assignments and holding office hours. I also know Python,
+                Java, HTML, CSS, C/C++, and Javascript. </p>
+            <p>
+                I hope to expand this website with information on my personal projects and
+                maybe turn it into a blog. If you're reading this, you're probably a recruiter
+                or a friend who wants to make fun of my HTML. Either way, please excuse
+                how underdeveloped this site is at the moment :)
+            </p>
+            <p>To the right are some photos of me, and below you can see info on the
+                latest project I've been working on.</p>
+        </div>
+
+		<div id="sidebar">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+              <!-- Full-width images with number and caption text -->
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="./images/websitepic3.jpg" style="width:100%">
+                <div class="text">My Dog</div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="./images/websitepic1.jpg" style="width:100%">
+                <div class="text">Small Josh</div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="./images/websitepic2.jpg" style="width:100%">
+                <div class="text">Ragtime Josh</div>
+              </div>
+
+              <!-- Next and previous buttons -->
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+		</div>
+	</div>
+
+    <div id="page" class="container">
+
+        <div id="sidebar-left">
+            <img src="./images/alphien1graphs.png" style="width:140%">
+            <img src="./images/alphien1.png" style="width:100%">
+        </div>
+        <div id="content-right">
+            <div class="title-right">
+                <h2>UBS Quant Hackathon 2020</h2>
+            </div>
+            <p>The UBS Hackathon is an online quantitative strategy and financial data
+                science competition hosted by the Alphien platform. This competition
+                was to outperform the S&P 500 index by developing a long only portfolio
+                using a payout function, which returns an equally weighted investment
+                in 50 stocks.
+            </p>
+            <p>
+                The payout function takes in a pandas dataframe consisting of the close
+                prices of stocks in the S&P 500 given a date, and it returns a pandas dataframe with dates
+                we wish to rebalance and the desired weights for each company, which
+                determines how much we invest. My methods truncate the dataframe of the
+                close prices to only include our rebalancing dates. Then they fill each
+                cell with a score, and then return a dataframe of allocations based on
+                the highest scores on a given date.
+            </p>
+            <p>
+                My first method was to simply compare a short SMA (simple moving average)
+                with a long SMA. The larger the short SMA is proportional to the long SMA,
+                the greater indicator that the stock's value is increasing. This method
+                surprisingly gave consistent results around 14% annualized returns, as seen
+                to the left.
+            </p>
+            <p>
+                My second method involved comparing the positive and negative directional
+                indicators(+/-DI) using high and low prices to calculate the average true range.
+                +DI indicates the presence of an uptrend, while -DI indicates the presence of a downtrend.
+                I scored based on how much greater +DI was compared to -DI. This method was more volatile,
+                but could reach up to 18% annualized returns in some cases.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="footer-wrapper">
+	<div id="footer" class="container">
+		<div id="box1">
+			<div class="title">
+				<h2>Contact</h2>
+			</div>
+			<ul class="contact">
+				<li>joshpark149@gmail.com</li>
+                <li>jcp336@cornell.edu</li><br>
+                <li><a href="https://www.facebook.com/profile.php?id=100006670395224">facebook</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+
+</html>
